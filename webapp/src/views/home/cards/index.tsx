@@ -8,6 +8,12 @@ import JavascriptIcon from "@mui/icons-material/Javascript";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { DirMetaData } from "../catalogue";
+import HtmlIcon from "@mui/icons-material/Html";
+import CssIcon from "@mui/icons-material/Css";
+import ImageIcon from "@mui/icons-material/Image";
+import AudioFileIcon from '@mui/icons-material/AudioFile';
+import CodeIcon from '@mui/icons-material/Code';
+import GifBoxIcon from '@mui/icons-material/GifBox';
 
 interface Props {
   outline?: boolean;
@@ -23,9 +29,7 @@ export default function ActionAreaCard(props: Props) {
     if (props.metaData.type === "Folder") navigate(url, { replace: true });
     else {
       window.open(
-        process.env.REACT_APP_HOST +
-          `/fs` +
-          url.replace("/catalogue", ""),
+        process.env.REACT_APP_HOST + `/fs` + url.replace("/catalogue", ""),
         "_blank"
       );
     }
@@ -37,6 +41,24 @@ export default function ActionAreaCard(props: Props) {
         return <JavascriptIcon color={"inherit"} />;
       case "pdf":
         return <PictureAsPdfIcon color={"inherit"} />;
+      case "html":
+        return <HtmlIcon color={"inherit"} />;
+      case "css":
+        return <CssIcon color={"inherit"} />;
+      case "img":
+      case "svg":
+      case "png":
+        return <ImageIcon color={"inherit"} />;
+      case "mp3":
+      case "ogg":
+        return <AudioFileIcon color={"inherit"} />;
+      case "java":
+      case "c":
+      case "py":
+      case "cpp":
+        return <CodeIcon color={"inherit"} />;
+      case "gif":
+        return <GifBoxIcon color={"inherit"} />;
       default:
         return <InsertDriveFileIcon color={"inherit"} />;
     }
@@ -58,7 +80,7 @@ export default function ActionAreaCard(props: Props) {
             "&:hover": {
               backgroundColor: props.outline ? "action.disabled" : "inherit",
             },
-            display: 'flex',
+            display: "flex",
             alignItems: "center",
           }}
         >

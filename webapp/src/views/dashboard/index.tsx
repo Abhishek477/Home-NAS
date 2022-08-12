@@ -75,7 +75,7 @@ export default function SearchAppBar() {
           >
             Home NAS
           </Typography>
-          <Search sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, cursor: 'pointer' }}>
+          <Search sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer' }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
