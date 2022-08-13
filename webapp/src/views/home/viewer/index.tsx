@@ -1,13 +1,12 @@
 import { FileSyntaxHighlighterProps } from "../../../commons/models/catalogueModels";
 import { useEffect, useState } from "react";
 import { getFile } from "../../../apis/catalogueApis";
-import Prism from "prismjs";
 
 export const FileSyntaxHighlighter = (props: FileSyntaxHighlighterProps) => {
   const [codeString, setCodeString] = useState<string>("");
   const [codeType, setCodeType] = useState<string>("html");
 
-  useEffect(() => Prism.highlightAll(), [codeString]);
+  useEffect(() => window.Prism.highlightAll(), [codeString]);
 
   useEffect(() => {
     document.title = `File Viewer | NAS`;
