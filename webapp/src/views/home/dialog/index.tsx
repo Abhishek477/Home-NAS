@@ -34,6 +34,7 @@ export default function MaxWidthDialog(props: MaxWdDialogProps) {
             sx={{
               padding: "16px",
               backgroundColor: "background.paper",
+              wordWrap: 'break-word'
             }}
           >{`${props.path}`}</DialogContentText>
           <FileSyntaxHighlighter path={props.path?.replace("/catalogue", "")} />

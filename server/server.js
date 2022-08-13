@@ -7,16 +7,12 @@ const si = require("systeminformation");
 
 const PORT = 4000;
 // const FILES_DIR = path.join(__dirname, "public/resources");
-const FILES_DIR = path.join("C:/Users/Lenovo/Documents/2022");
+const FILES_DIR = path.join("C:/Users/Lenovo/Documents");
 
 const app = express();
 
 app.use(cors());
 app.use(express.static("public/static"));
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
@@ -127,3 +123,9 @@ app.get("/si/:fn", function (req, res, next) {
       res.send(error);
     });
 });
+
+
+/* final catch-all route to index.html defined last */
+app.get('/*', (req, res) => {
+  res.sendFile('index.html', {root: 'public/static'});
+})
