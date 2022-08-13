@@ -9,6 +9,7 @@ import Divider from "@mui/material/Divider";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Link, { LinkProps } from "@mui/material/Link";
+import { DirMetaData } from "../../../commons/models/catalogueModels";
 
 interface LinkRouterProps extends LinkProps {
   to: string;
@@ -19,12 +20,6 @@ const LinkRouter = (props: LinkRouterProps) => (
   <Link {...props} component={RouterLink as any} />
 );
 
-export interface DirMetaData {
-  name: string;
-  type: "Folder" | "File";
-  extension?: string;
-}
-
 const CatalogueView = () => {
   let location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
@@ -32,6 +27,9 @@ const CatalogueView = () => {
   const [dir, setDir] = useState<DirMetaData[]>([]);
 
   useEffect(() => {
+    
+    document.title = `${location.pathname?.substring(location.pathname?.lastIndexOf("/") + 1)} | NAS`;
+
     (async () => {
       const res: DirMetaData[] = await listDir(
         location.pathname.replace("/catalogue", "") || ""
@@ -42,7 +40,7 @@ const CatalogueView = () => {
 
   return (
     <Box sx={{ padding: "24px", width: "100vw" }}>
-      <div style={{ width: "100%", marginBottom: "16px" }}>
+      <div style={{ width: "100%", marginBottom: "16px", marginTop: "48px" }}>
         <Breadcrumbs
           maxItems={6}
           style={{ paddingBottom: "8px" }}
@@ -69,12 +67,7 @@ const CatalogueView = () => {
         </Breadcrumbs>
         <Divider />
       </div>
-      <Grid
-        container
-        spacing={2}
-        direction={"row"}
-        alignItems={"stretch"}
-      >
+      <Grid container spacing={2} direction={"row"} alignItems={"stretch"}>
         {dir.some((el) => el.type === "Folder") && (
           <>
             <Grid item xs={12} key={"head-folder"}>

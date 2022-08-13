@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import SearchAppBar from "./views/dashboard";
 import CssBaseline from "@mui/material/CssBaseline";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -20,7 +21,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SearchAppBar />
+      <BrowserRouter>
+        <SearchAppBar />
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
