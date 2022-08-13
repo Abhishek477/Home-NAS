@@ -22,7 +22,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
+export const drawerWidth = 240;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

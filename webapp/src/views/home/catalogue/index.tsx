@@ -39,8 +39,8 @@ const CatalogueView = () => {
   }, [location]);
 
   return (
-    <Box sx={{ padding: "24px", width: "100vw" }}>
-      <div style={{ width: "100%", marginBottom: "16px", marginTop: "48px" }}>
+    <Box>
+      <div style={{marginBottom: "16px"}}>
         <Breadcrumbs
           maxItems={6}
           style={{ paddingBottom: "8px" }}

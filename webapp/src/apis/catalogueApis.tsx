@@ -5,7 +5,7 @@ const myHeaders = {
 };
 
 export const listDir = async (path: string) => {
-  let response = await fetch(`${host}/fs/${path}`, {
+  let response = await fetch(`${host}/fs${path}`, {
     method: "GET",
     headers: myHeaders,
   });
@@ -20,4 +20,13 @@ export const getFile = async (path: string) => {
   });
   let data = await response.text();
   return data;
+};
+
+export const getSysInfo = async (fn: string) => {
+  let response = await fetch(`${host}/si/${fn}`, {
+    method: "GET",
+    headers: {...myHeaders, "Content-Type": "application/json",},
+  });
+  let data = await response.json();
+  return JSON.stringify(data, null, 4);
 };

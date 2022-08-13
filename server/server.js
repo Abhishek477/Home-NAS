@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
 const { type } = require("os");
+const si = require("systeminformation");
 
 const PORT = 4000;
 // const FILES_DIR = path.join(__dirname, "public/resources");
@@ -113,4 +114,16 @@ app.get("/fs/:file(*)", function (req, res, next) {
       }
     });
   }
+});
+
+app.get("/si/:fn", function (req, res, next) {
+  si[req.params.fn]()
+    .then((data) => {
+      res.statusCode = 200;
+      res.send(data);
+    })
+    .catch((error) => {
+      res.statusCode = 500;
+      res.send(error);
+    });
 });
